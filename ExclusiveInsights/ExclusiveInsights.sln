@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExclusiveInsights", "ExclusiveInsights.csproj", "{2C462067-6377-4CAB-AFA6-F4A563B53432}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ExcluSightsLibrary", "ExcluSightsLibrary", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcluSightsLibrary", "..\ExcluSightsLibrary\ExcluSightsLibrary.csproj", "{7CE4F6A2-69A1-470E-9B7B-4181AE615A61}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +19,16 @@ Global
 		{2C462067-6377-4CAB-AFA6-F4A563B53432}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C462067-6377-4CAB-AFA6-F4A563B53432}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C462067-6377-4CAB-AFA6-F4A563B53432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE4F6A2-69A1-470E-9B7B-4181AE615A61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE4F6A2-69A1-470E-9B7B-4181AE615A61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE4F6A2-69A1-470E-9B7B-4181AE615A61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE4F6A2-69A1-470E-9B7B-4181AE615A61}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7CE4F6A2-69A1-470E-9B7B-4181AE615A61} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1A46526-1B0D-45FA-A679-439EE030A74B}
