@@ -363,3 +363,4 @@ MigrationBackup/
 FodyWeavers.xsd
 /ExclusiveInsights/Properties
 /ExclusiveInsights/host.json
+/ExclusiveInsights/local.settings.json
