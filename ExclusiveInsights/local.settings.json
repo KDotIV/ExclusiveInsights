@@ -1,0 +1,9 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "DiscordBotToken": "MTQxMDMxNTAyMzg1NDYwNDM1MQ.GqwrtD.65QiDT_mjRxlv6VEAWdiYoeKQXu-TIxTXkKoxE",
+    "PG_ConnectionString": "localhost;5432;postgres;password;mydatabase"
+  }
+}
