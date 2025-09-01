@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <None Include="local.settings.json" />
     <PackageReference Include="Discord.Net.Rest" Version="3.18.0" />
     <PackageReference Include="Discord.Net.Webhook" Version="3.18.0" />
     <PackageReference Include="Discord.Net.WebSocket" Version="3.18.0" />

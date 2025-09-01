@@ -1,8 +1,6 @@
-﻿
-using Discord;
+﻿using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 
 namespace ExcluSightsLibrary.DiscordServices
 {
@@ -18,7 +16,7 @@ namespace ExcluSightsLibrary.DiscordServices
         // barrier for the first complete backfill
         private TaskCompletionSource<bool> _initialBackfillTcs = new(TaskCreationOptions.RunContinuationsAsynchronously);
         private volatile bool _backfillStarted;   // avoid re-running on reconnect
-        private volatile bool _backfillCompleted; // idempotent complete
+        private volatile bool _backfillCompleted; // keeps initial guild state
 
         public DiscordSocketEngine(string botToken, string connStr, ILogger<DiscordSocketEngine> log)
         {
@@ -104,7 +102,7 @@ namespace ExcluSightsLibrary.DiscordServices
             }
             catch (OperationCanceledException)
             {
-                _log.LogWarning("WaitForInitialBackfillAsync timed out after {Timeout}. Proceeding without full backfill.", timeout);
+                _log.LogWarning("InitialBackfill timed out after {Timeout}. Proceeding without full backfill.", timeout);
                 return false;
             }
             catch (Exception ex)
