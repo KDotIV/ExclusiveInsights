@@ -19,7 +19,7 @@ namespace ExclusiveInsights
             _httpClient = new HttpClient();
             _socketEngine = socketEngine;
         }
-        
+
         [Function("CustomerProfileIntake")]
         public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequest req)
         {
