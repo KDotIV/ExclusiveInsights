@@ -22,6 +22,16 @@
   <ItemGroup>
     <ProjectReference Include="..\ExcluSightsLibrary\ExcluSightsLibrary.csproj" />
   </ItemGroup>
+  <Target Name="EnsureHostJson" BeforeTargets="AssignTargetPaths">
+    <PropertyGroup>
+      <_HostJsonPath>$(MSBuildProjectDirectory)\host.json</_HostJsonPath>
+    </PropertyGroup>
+    <Message Text="host.json not found; generating default." Importance="high"
+             Condition="!Exists('$(_HostJsonPath)')" />
+    <WriteLinesToFile File="$(_HostJsonPath)" Overwrite="true"
+                      Condition="!Exists('$(_HostJsonPath)')">
+    </WriteLinesToFile>
+  </Target>
   <ItemGroup>
     <None Include="host.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
