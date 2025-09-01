@@ -10,7 +10,8 @@ env:
   AZURE_FUNCTIONAPP_PACKAGE_PATH: ./published
   CONFIGURATION: Release
   DOTNET_VERSION: 8.0.x
-  SOLUTION_PATH: ExclusiveInsights/ExclusiveInsights.sln
+  SOLUTION_PATH: ExclusiveInsightsFuncApp/ExclusiveInsights.sln
+  PROJECT_PATH: ExclusiveInsightsAPI/ExclusiveInsightsFuncApp/ExclusiveInsightsFuncApp.csproj
 
 jobs:
   build-and-deploy:
@@ -33,7 +34,7 @@ jobs:
 
       - name: Publish Function App
         run: |
-          dotnet publish "${{ env.SOLUTION_PATH }}" \
+          dotnet publish "${{ env.PROJECT_PATH }}" \
             -c "${{ env.CONFIGURATION }}" \
             -o "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}"
 
