@@ -6,12 +6,11 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_FUNCTIONAPP_NAME: ExclusiveInsightsScheduler
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: ./published
+  AZURE_FUNCTIONAPP_NAME: ExclusiveInsightsScheduler   # <-- must match your Azure Function App
   CONFIGURATION: Release
   DOTNET_VERSION: 8.0.x
-  SOLUTION_PATH: ExclusiveInsightsFuncApp/ExclusiveInsights.sln
-  PROJECT_PATH: ExclusiveInsightsAPI/ExclusiveInsightsFuncApp/ExclusiveInsightsFuncApp.csproj
+  FUNCTION_PROJECT: ExclusiveInsightsFuncApp/ExclusiveInsightsFuncApp.csproj
+  PUBLISH_DIR: ./published
 
 jobs:
   build-and-deploy:
@@ -24,19 +23,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup .NET ${{ env.DOTNET_VERSION }}
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: List repo tree (depth 2)
+        run: 
+          ls -la
+          ls -la ExclusiveInsightsFuncApp || true
+
       - name: Restore
-        run: dotnet restore "${{ env.SOLUTION_PATH }}"
+        run: dotnet restore "${{ env.FUNCTION_PROJECT }}"
 
       - name: Publish Function App
         run: |
-          dotnet publish "${{ env.PROJECT_PATH }}" \
+          dotnet publish "${{ env.FUNCTION_PROJECT }}" \
             -c "${{ env.CONFIGURATION }}" \
-            -o "${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}"
+            -o "${{ env.PUBLISH_DIR }}"
 
       - name: Azure Login (OIDC)
         uses: azure/login@v2
@@ -49,4 +53,4 @@ jobs:
         uses: Azure/functions-action@v1
         with:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
-          package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
+          package: ${{ env.PUBLISH_DIR }}

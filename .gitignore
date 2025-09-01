@@ -361,7 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/ExclusiveInsights/Properties
-/ExclusiveInsights/host.json
-/ExclusiveInsights/local.settings.json
+/ExclusiveInsightsFuncApp/Properties
+/ExclusiveInsightsFuncApp/host.json
 /ExclusiveInsightsFuncApp/local.settings.json
