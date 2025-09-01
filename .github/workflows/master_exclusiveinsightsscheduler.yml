@@ -29,7 +29,7 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
       - name: List repo tree (depth 2)
-        run: 
+        run: |
           ls -la
           ls -la ExclusiveInsightsFuncApp || true
 
@@ -42,6 +42,11 @@ jobs:
             -c "${{ env.CONFIGURATION }}" \
             -o "${{ env.PUBLISH_DIR }}"
 
+      - name: Show publish output
+        run: |
+          ls -la "${{ env.PUBLISH_DIR }}"
+          test -f "${{ env.PUBLISH_DIR }}/host.json" || (echo "host.json missing!" && exit 1)
+      
       - name: Azure Login (OIDC)
         uses: azure/login@v2
         with:
