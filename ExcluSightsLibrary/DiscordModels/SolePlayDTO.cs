@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ExcluSightsLibrary.DiscordModels
+﻿namespace ExcluSightsLibrary.DiscordModels
 {
     public class SolePlayDTO : CustomerProfileData
     {
