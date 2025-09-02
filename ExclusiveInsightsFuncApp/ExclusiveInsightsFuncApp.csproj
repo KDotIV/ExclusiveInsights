@@ -19,17 +19,12 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="2.0.2" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.5" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ExcluSightsLibrary\ExcluSightsLibrary.csproj" />
-  </ItemGroup>
   <Target Name="EnsureHostJson" BeforeTargets="AssignTargetPaths">
     <PropertyGroup>
       <_HostJsonPath>$(MSBuildProjectDirectory)\host.json</_HostJsonPath>
     </PropertyGroup>
-    <Message Text="host.json not found; generating default." Importance="high"
-             Condition="!Exists('$(_HostJsonPath)')" />
-    <WriteLinesToFile File="$(_HostJsonPath)" Overwrite="true"
-                      Condition="!Exists('$(_HostJsonPath)')">
+    <Message Text="host.json not found; generating default." Importance="high" Condition="!Exists('$(_HostJsonPath)')" />
+    <WriteLinesToFile File="$(_HostJsonPath)" Overwrite="true" Condition="!Exists('$(_HostJsonPath)')">
     </WriteLinesToFile>
   </Target>
   <ItemGroup>
@@ -41,6 +36,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>Never</CopyToPublishDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Sengoku-Backend\ExcluSightsLibrary\ExcluSightsLibrary.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
